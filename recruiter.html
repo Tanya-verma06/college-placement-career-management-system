@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerNova | Recruiter Panel</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6fb;
+            color: #1e293b;
+        }
+
+        .recruiter-nav {
+            background: #ffffff;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06);
+        }
+
+        .recruiter-logo {
+            color: #4f46e5;
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .recruiter-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        .recruiter-links a {
+            color: #475569;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .recruiter-links a:hover {
+            color: #4f46e5;
+        }
+
+        .recruiter-logout {
+            background: #fee2e2;
+            color: #dc2626;
+            border: none;
+            padding: 10px 17px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .recruiter-container {
+            width: 86%;
+            max-width: 1200px;
+            margin: 45px auto;
+        }
+
+        .recruiter-header {
+            margin-bottom: 28px;
+        }
+
+        .recruiter-eyebrow {
+            color: #6366f1;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .recruiter-header h1 {
+            color: #172554;
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .recruiter-header p {
+            color: #64748b;
+            font-size: 15px;
+            margin-top: 12px;
+        }
+
+        .recruiter-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+            margin-bottom: 28px;
+        }
+
+        .recruiter-stat-card {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #6366f1;
+            box-shadow: 0 5px 20px rgba(15, 23, 42, 0.05);
+        }
+
+        .recruiter-stat-card span {
+            color: #64748b;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .recruiter-stat-card h2 {
+            color: #172554;
+            font-size: 32px;
+            margin: 12px 0 0;
+        }
+
+        .recruiter-card {
+            background: #ffffff;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 5px 22px rgba(15, 23, 42, 0.06);
+            margin-bottom: 25px;
+        }
+
+        .recruiter-card h2 {
+            color: #1e293b;
+            font-size: 23px;
+            margin: 0 0 25px;
+        }
+
+        .recruiter-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 22px;
+        }
+
+        .recruiter-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .recruiter-field.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .recruiter-field label {
+            color: #334155;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .recruiter-field input,
+        .recruiter-field select,
+        .recruiter-field textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #dbe2ea;
+            border-radius: 9px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: #334155;
+            background: #ffffff;
+            outline: none;
+        }
+
+        .recruiter-field input:focus,
+        .recruiter-field select:focus,
+        .recruiter-field textarea:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .recruiter-field textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .recruiter-submit {
+            grid-column: 1 / -1;
+            background: #4f46e5;
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            border-radius: 9px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .recruiter-submit:hover {
+            background: #4338ca;
+        }
+
+        .recruiter-message {
+            grid-column: 1 / -1;
+            color: #475569;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .recruiter-content {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .recruiter-nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .recruiter-links {
+                gap: 14px;
+            }
+
+            .recruiter-container {
+                width: 92%;
+                margin-top: 30px;
+            }
+
+            .recruiter-header h1 {
+                font-size: 29px;
+            }
+
+            .recruiter-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .recruiter-card {
+                padding: 23px;
+            }
+
+            .recruiter-form {
+                grid-template-columns: 1fr;
+            }
+
+            .recruiter-field.full-width,
+            .recruiter-submit,
+            .recruiter-message {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="recruiter-nav">
+        <a href="dashboard.html" class="recruiter-logo">CareerNova</a>
+
+        <nav class="recruiter-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="jobs.html">Jobs</a>
+            <a href="recruiter.html">Recruiter Panel</a>
+            <button id="logoutBtn" class="recruiter-logout">Logout</button>
+        </nav>
+    </header>
+
+    <main class="recruiter-container">
+        <section class="recruiter-header">
+            <p class="recruiter-eyebrow">RECRUITER MANAGEMENT</p>
+            <h1>Recruiter Panel</h1>
+            <p>Post job opportunities and manage applications efficiently.</p>
+        </section>
+
+        <section class="recruiter-stats">
+            <div class="recruiter-stat-card">
+                <span>Posted Jobs</span>
+                <h2 id="recruiterJobCount">0</h2>
+            </div>
+
+            <div class="recruiter-stat-card">
+                <span>Total Applications</span>
+                <h2 id="recruiterApplicationCount">0</h2>
+            </div>
+        </section>
+
+        <section class="recruiter-card">
+            <h2>Post a New Job</h2>
+
+            <form id="jobPostForm" class="recruiter-form">
+                <div class="recruiter-field">
+                    <label for="jobTitle">Job Title</label>
+                    <input type="text" id="jobTitle" placeholder="e.g. Frontend Developer" required>
+                </div>
+
+                <div class="recruiter-field">
+                    <label for="companyName">Company Name</label>
+                    <input type="text" id="companyName" placeholder="Enter company name" required>
+                </div>
+
+                <div class="recruiter-field">
+                    <label for="jobType">Job Type</label>
+                    <select id="jobType" required>
+                        <option value="">Select job type</option>
+                        <option value="Internship">Internship</option>
+                        <option value="Full Time">Full Time</option>
+                    </select>
+                </div>
+
+                <div class="recruiter-field">
+                    <label for="jobLocation">Location</label>
+                    <select id="jobLocation" required>
+                        <option value="">Select location</option>
+                        <option value="Remote">Remote</option>
+                        <option value="On-site">On-site</option>
+                        <option value="Hybrid">Hybrid</option>
+                    </select>
+                </div>
+
+                <div class="recruiter-field full-width">
+                    <label for="jobPackage">Salary / Stipend</label>
+                    <input type="text" id="jobPackage" placeholder="e.g. 6 LPA or ₹15,000/month" required>
+                </div>
+
+                <div class="recruiter-field full-width">
+                    <label for="jobSkills">Required Skills</label>
+                    <textarea id="jobSkills" rows="4" placeholder="JavaScript, HTML, CSS" required></textarea>
+                </div>
+
+                <div class="recruiter-field full-width">
+                    <label for="jobDescription">Job Description</label>
+                    <textarea id="jobDescription" rows="5" placeholder="Enter job description" required></textarea>
+                </div>
+
+                <button type="submit" class="recruiter-submit">
+                    Post Job
+                </button>
+
+                <p id="jobPostMessage" class="recruiter-message"></p>
+            </form>
+        </section>
+
+        <section class="recruiter-card">
+            <h2>My Posted Jobs</h2>
+
+            <div id="recruiterJobsContainer" class="recruiter-content">
+                <p>Loading posted jobs...</p>
+            </div>
+        </section>
+
+        <section class="recruiter-card">
+            <h2>Applications Received</h2>
+
+            <div id="recruiterApplicationsContainer" class="recruiter-content">
+                <p>Loading applications...</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

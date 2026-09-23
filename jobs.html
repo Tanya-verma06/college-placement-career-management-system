@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerNova | Explore Jobs</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6fb;
+            color: #1e293b;
+        }
+
+        .jobs-nav {
+            background: #ffffff;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06);
+        }
+
+        .jobs-logo {
+            color: #4f46e5;
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .jobs-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        .jobs-links a {
+            color: #475569;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .jobs-links a:hover {
+            color: #4f46e5;
+        }
+
+        .jobs-logout {
+            background: #fee2e2;
+            color: #dc2626;
+            border: none;
+            padding: 10px 17px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .jobs-container {
+            width: 86%;
+            max-width: 1250px;
+            margin: 45px auto;
+        }
+
+        .jobs-header {
+            margin-bottom: 28px;
+        }
+
+        .jobs-eyebrow {
+            color: #6366f1;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .jobs-header h1 {
+            color: #172554;
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .jobs-header p {
+            color: #64748b;
+            font-size: 15px;
+            margin-top: 12px;
+        }
+
+        .jobs-filter {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 15px;
+            background: #ffffff;
+            padding: 22px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(15, 23, 42, 0.05);
+            margin-bottom: 28px;
+        }
+
+        .jobs-filter input,
+        .jobs-filter select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #dbe2ea;
+            border-radius: 9px;
+            font-size: 14px;
+            color: #334155;
+            background: #ffffff;
+            outline: none;
+        }
+
+        .jobs-filter input:focus,
+        .jobs-filter select:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+        }
+
+        .jobs-empty {
+            background: #ffffff;
+            padding: 45px 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(15, 23, 42, 0.05);
+        }
+
+        .jobs-empty h2 {
+            color: #334155;
+            margin-bottom: 10px;
+        }
+
+        .jobs-empty p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        @media (max-width: 850px) {
+            .jobs-filter {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .jobs-nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .jobs-links {
+                gap: 14px;
+            }
+
+            .jobs-container {
+                width: 92%;
+                margin-top: 30px;
+            }
+
+            .jobs-header h1 {
+                font-size: 29px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="jobs-nav">
+        <a href="dashboard.html" class="jobs-logo">CareerNova</a>
+
+        <nav class="jobs-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="jobs.html">Jobs</a>
+            <a href="career.html">Career</a>
+            <a href="profile.html">Profile</a>
+            <button id="logoutBtn" class="jobs-logout">Logout</button>
+        </nav>
+    </header>
+
+    <main class="jobs-container">
+        <section class="jobs-header">
+            <p class="jobs-eyebrow">OPPORTUNITIES</p>
+            <h1>Explore Jobs</h1>
+            <p>Discover internships and job opportunities that match your career goals.</p>
+        </section>
+
+        <section class="jobs-filter">
+            <input
+                type="text"
+                id="jobSearch"
+                placeholder="Search by job title or company"
+            >
+
+            <select id="jobTypeFilter">
+                <option value="">All Job Types</option>
+                <option value="Internship">Internship</option>
+                <option value="Full Time">Full Time</option>
+            </select>
+
+            <select id="jobLocationFilter">
+                <option value="">All Locations</option>
+                <option value="Remote">Remote</option>
+                <option value="On-site">On-site</option>
+                <option value="Hybrid">Hybrid</option>
+            </select>
+        </section>
+
+        <section id="jobsContainer" class="jobs-grid">
+            <div class="jobs-empty">
+                <h2>Loading Jobs...</h2>
+                <p>Please wait while available opportunities are loaded.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
