@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerNova | My Profile</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6fb;
+            color: #1e293b;
+        }
+
+        .profile-nav {
+            background: #ffffff;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06);
+        }
+
+        .profile-logo {
+            color: #4f46e5;
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .profile-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        .profile-links a {
+            color: #475569;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .profile-links a:hover {
+            color: #4f46e5;
+        }
+
+        .profile-logout {
+            background: #fee2e2;
+            color: #dc2626;
+            border: none;
+            padding: 10px 17px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .profile-container {
+            width: 86%;
+            max-width: 1050px;
+            margin: 45px auto;
+        }
+
+        .profile-header {
+            margin-bottom: 28px;
+        }
+
+        .profile-eyebrow {
+            color: #6366f1;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .profile-header h1 {
+            color: #172554;
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .profile-header p {
+            color: #64748b;
+            font-size: 15px;
+            margin-top: 12px;
+        }
+
+        .profile-card,
+        .student-profile-card {
+            background: #ffffff;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 5px 22px rgba(15, 23, 42, 0.06);
+        }
+
+        .profile-card h2,
+        .student-profile-card h2 {
+            color: #1e293b;
+            font-size: 23px;
+            margin: 0 0 25px;
+        }
+
+        .profile-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 22px;
+        }
+
+        .profile-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-field.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .profile-field label {
+            color: #334155;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .profile-field input,
+        .profile-field textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #dbe2ea;
+            border-radius: 9px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: #334155;
+            background: #ffffff;
+            outline: none;
+        }
+
+        .profile-field input:focus,
+        .profile-field textarea:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .profile-field textarea {
+            resize: vertical;
+            min-height: 115px;
+        }
+
+        .profile-submit {
+            grid-column: 1 / -1;
+            background: #4f46e5;
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            border-radius: 9px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .profile-submit:hover {
+            background: #4338ca;
+        }
+
+        .profile-message {
+            grid-column: 1 / -1;
+            color: #475569;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .student-profile-card {
+            margin-top: 30px;
+        }
+
+        .student-profile-details {
+            display: grid;
+            gap: 0;
+        }
+
+        .student-profile-details p {
+            margin: 0;
+            padding: 14px 0;
+            border-bottom: 1px solid #e2e8f0;
+            color: #475569;
+            font-size: 14px;
+            overflow-wrap: anywhere;
+        }
+
+        .student-profile-details strong {
+            color: #172554;
+        }
+
+        @media (max-width: 768px) {
+            .profile-nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .profile-links {
+                gap: 14px;
+            }
+
+            .profile-container {
+                width: 92%;
+                margin-top: 30px;
+            }
+
+            .profile-header h1 {
+                font-size: 29px;
+            }
+
+            .profile-card,
+            .student-profile-card {
+                padding: 23px;
+            }
+
+            .profile-form {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-field.full-width,
+            .profile-submit,
+            .profile-message {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="profile-nav">
+        <a href="dashboard.html" class="profile-logo">CareerNova</a>
+
+        <nav class="profile-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="jobs.html">Jobs</a>
+            <a href="career.html">Career</a>
+            <a href="profile.html">Profile</a>
+            <button id="logoutBtn" class="profile-logout">Logout</button>
+        </nav>
+    </header>
+
+    <main class="profile-container">
+        <section class="profile-header">
+            <p class="profile-eyebrow">PERSONAL INFORMATION</p>
+            <h1>My Profile</h1>
+            <p>Keep your personal information and technical skills up to date.</p>
+        </section>
+
+        <section class="profile-card">
+            <h2>Profile Information</h2>
+
+            <form id="profileForm" class="profile-form">
+                <div class="profile-field">
+                    <label for="profileName">Full Name</label>
+                    <input type="text" id="profileName" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="profile-field">
+                    <label for="profileEmail">Email Address</label>
+                    <input type="email" id="profileEmail" placeholder="Enter your email" required>
+                </div>
+
+                <div class="profile-field">
+                    <label for="profilePhone">Phone Number</label>
+                    <input type="tel" id="profilePhone" placeholder="Enter your phone number" required>
+                </div>
+
+                <div class="profile-field">
+                    <label for="profileCourse">Course</label>
+                    <input type="text" id="profileCourse" placeholder="e.g. B.Tech CSE" required>
+                </div>
+
+                <div class="profile-field">
+                    <label for="profileYear">Graduation Year</label>
+                    <input type="number" id="profileYear" placeholder="e.g. 2028" required>
+                </div>
+
+                <div class="profile-field">
+                    <label for="profileCpi">CPI</label>
+                    <input type="number" id="profileCpi" step="0.01" placeholder="Enter your CPI" required>
+                </div>
+
+                <div class="profile-field full-width">
+                    <label for="profileSkills">Technical Skills</label>
+                    <textarea id="profileSkills" rows="4" placeholder="Java, HTML, CSS, JavaScript, AWS"></textarea>
+                </div>
+
+                <div class="profile-field full-width">
+                    <label for="profileGithub">GitHub Profile</label>
+                    <input type="url" id="profileGithub" placeholder="Enter your GitHub profile link">
+                </div>
+
+                <div class="profile-field full-width">
+                    <label for="profileLinkedin">LinkedIn Profile</label>
+                    <input type="url" id="profileLinkedin" placeholder="Enter your LinkedIn profile link">
+                </div>
+
+                <button type="submit" class="profile-submit">
+                    Save Profile
+                </button>
+
+                <p id="profileMessage" class="profile-message"></p>
+            </form>
+        </section>
+
+        <section class="student-profile-card">
+            <h2>My Student Profile</h2>
+
+            <div class="student-profile-details">
+                <p><strong>Full Name:</strong> <span id="viewProfileName">Not provided</span></p>
+                <p><strong>Email:</strong> <span id="viewProfileEmail">Not provided</span></p>
+                <p><strong>Phone:</strong> <span id="viewProfilePhone">Not provided</span></p>
+                <p><strong>Course:</strong> <span id="viewProfileCourse">Not provided</span></p>
+                <p><strong>Graduation Year:</strong> <span id="viewProfileYear">Not provided</span></p>
+                <p><strong>CPI:</strong> <span id="viewProfileCpi">Not provided</span></p>
+                <p><strong>Technical Skills:</strong> <span id="viewProfileSkills">Not provided</span></p>
+                <p><strong>GitHub:</strong> <span id="viewProfileGithub">Not provided</span></p>
+                <p><strong>LinkedIn:</strong> <span id="viewProfileLinkedin">Not provided</span></p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
