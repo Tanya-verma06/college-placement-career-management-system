@@ -1,0 +1,415 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerNova | Register</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .career-register-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+        }
+
+        .career-register-card {
+            width: 100%;
+            max-width: 1050px;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            background: #ffffff;
+            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
+        }
+
+        .career-register-info {
+            padding: 55px 42px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(145deg, #312e81, #6366f1);
+            color: #ffffff;
+        }
+
+        .career-register-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            width: fit-content;
+            margin-bottom: 55px;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .career-register-logo span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: #ffffff;
+            color: #4f46e5;
+            font-size: 15px;
+        }
+
+        .career-register-info h1 {
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-size: 42px;
+            line-height: 1.15;
+        }
+
+        .career-register-info > p {
+            max-width: 360px;
+            color: #e0e7ff;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .career-register-benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-top: 35px;
+        }
+
+        .career-register-benefits div {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .career-register-benefits span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 27px;
+            height: 27px;
+            border-radius: 50%;
+            background: #ffffff26;
+            color: #ffffff;
+        }
+
+        .career-register-form-area {
+            padding: 45px;
+            background: #ffffff;
+        }
+
+        .career-register-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .career-register-top h2 {
+            margin-bottom: 8px;
+            color: #0f172a;
+            font-size: 30px;
+        }
+
+        .career-register-top p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .career-register-login {
+            color: #4f46e5;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .career-register-form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .career-register-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .career-register-field label {
+            color: #334155;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .career-register-field input,
+        .career-register-field select {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #dbe2ea;
+            border-radius: 9px;
+            outline: none;
+            background: #f8fafc;
+            color: #0f172a;
+            font-family: inherit;
+            font-size: 14px;
+            transition: 0.25s;
+        }
+
+        .career-register-field input::placeholder {
+            color: #94a3b8;
+        }
+
+        .career-register-field input:focus,
+        .career-register-field select:focus {
+            border-color: #6366f1;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px #6366f11a;
+        }
+
+        .career-register-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .career-register-submit {
+            width: 100%;
+            padding: 14px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 9px;
+            background: #4f46e5;
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .career-register-submit:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+        }
+
+        .career-register-security {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            margin-top: 18px;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        .career-register-bottom {
+            margin-top: 25px;
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .career-register-bottom a {
+            color: #4f46e5;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .career-register-message {
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 800px) {
+            .career-register-card {
+                grid-template-columns: 1fr;
+                max-width: 560px;
+            }
+
+            .career-register-info {
+                padding: 35px;
+            }
+
+            .career-register-logo {
+                margin-bottom: 35px;
+            }
+
+            .career-register-info h1 {
+                font-size: 34px;
+            }
+
+            .career-register-form-area {
+                padding: 35px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .career-register-page {
+                padding: 20px 12px;
+            }
+
+            .career-register-info,
+            .career-register-form-area {
+                padding: 28px 22px;
+            }
+
+            .career-register-row {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .career-register-top {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .career-register-top h2 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="career-register-page">
+        <div class="career-register-card">
+
+            <section class="career-register-info">
+                <a href="index.html" class="career-register-logo">
+                    <span>CN</span>
+                    CareerNova
+                </a>
+
+                <h1>Build Your<br>Career With Us.</h1>
+
+                <p>
+                    Create your account and take the next step toward
+                    better placement opportunities and professional growth.
+                </p>
+
+                <div class="career-register-benefits">
+                    <div>
+                        <span>✓</span>
+                        Discover placement opportunities
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Track your job applications
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Improve your career skills
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Connect with recruiters
+                    </div>
+                </div>
+            </section>
+
+            <section class="career-register-form-area">
+                <div class="career-register-top">
+                    <div>
+                        <h2>Create Account</h2>
+                        <p>Fill in your details to join CareerNova.</p>
+                    </div>
+
+                    <a href="login.html" class="career-register-login">
+                        Sign In →
+                    </a>
+                </div>
+
+                <form id="registerForm" class="career-register-form">
+
+                    <div class="career-register-field">
+                        <label for="registerName">Full Name</label>
+                        <input
+                            type="text"
+                            id="registerName"
+                            placeholder="Enter your full name"
+                            required
+                        >
+                    </div>
+
+                    <div class="career-register-field">
+                        <label for="registerEmail">Email Address</label>
+                        <input
+                            type="email"
+                            id="registerEmail"
+                            placeholder="you@example.com"
+                            required
+                        >
+                    </div>
+
+                    <div class="career-register-field">
+                        <label for="registerPassword">Password</label>
+                        <input
+                            type="password"
+                            id="registerPassword"
+                            placeholder="Create a secure password"
+                            minlength="6"
+                            required
+                        >
+                    </div>
+
+                    <div class="career-register-row">
+                        <div class="career-register-field">
+                            <label for="registerRole">Account Type</label>
+                            <select id="registerRole" required>
+                                <option value="">Choose role</option>
+                                <option value="student">Student</option>
+                                <option value="recruiter">Recruiter</option>
+                            </select>
+                        </div>
+
+                        <div class="career-register-field">
+                            <label for="registerCourse">Course</label>
+                            <input
+                                type="text"
+                                id="registerCourse"
+                                placeholder="e.g. B.Tech CSE"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <button type="submit" class="career-register-submit">
+                        Create Account →
+                    </button>
+
+                    <p id="registerMessage" class="career-register-message"></p>
+                </form>
+
+                <div class="career-register-security">
+                    <span>🔒</span>
+                    Your information stays on this platform.
+                </div>
+
+                <p class="career-register-bottom">
+                    Already have an account?
+                    <a href="login.html">Login Here</a>
+                </p>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
