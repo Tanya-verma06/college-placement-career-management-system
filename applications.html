@@ -70,9 +70,9 @@
             margin: 45px auto;
         }
 
-        .career-app-header {
-            margin-bottom: 28px;
-        }
+        .career-app-header { 
+            background: linear-gradient(120deg, #2563eb, #7c3aed);
+             color: #ffffff; }
 
         .career-app-eyebrow {
             color: #6366f1;
@@ -82,16 +82,13 @@
             margin-bottom: 10px;
         }
 
-        .career-app-header h1 {
-            margin: 0;
-            font-size: 36px;
-            color: #172554;
-        }
-
-        .career-app-header p {
-            color: #64748b;
-            margin-top: 12px;
-            font-size: 15px;
+        .career-app-header h1 { 
+            color: #ffffff !important; 
+            font-weight: 800;
+         } 
+        .career-app-header p { 
+            color: #f8fafc !important;
+            opacity: 1;
         }
 
         .career-app-filter {
@@ -170,6 +167,56 @@
         }
     </style>
 </head>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const applications = JSON.parse(
+        localStorage.getItem("careerNovaApplications") || "[]"
+    );
+
+    const container = document.getElementById("applicationsList");
+
+    if (!container) {
+        console.error(
+            'applications.html mein id="applicationsList" wala element nahi mila.'
+        );
+        return;
+    }
+
+    if (applications.length === 0) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <h3>No applications yet</h3>
+                <p>Explore jobs and click Apply Now to get started.</p>
+                <a href="dashboard.html">Explore Opportunities</a>
+            </div>
+        `;
+        return;
+    }
+
+    container.innerHTML = "";
+
+    applications.forEach(function (app) {
+        const card = document.createElement("article");
+        card.className = "application-card";
+
+        const title = document.createElement("h3");
+        title.textContent = app.jobTitle || "Job Application";
+
+        const status = document.createElement("p");
+        status.textContent = "Status: " + (app.status || "Applied");
+
+        const date = document.createElement("p");
+        date.textContent = app.appliedAt
+            ? "Applied on: " + new Date(app.appliedAt).toLocaleDateString()
+            : "Application date unavailable";
+
+        card.append(title, status, date);
+        container.appendChild(card);
+    });
+});
+</script>
+
 <body>
 
     <header class="career-app-navbar">
