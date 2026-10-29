@@ -562,12 +562,12 @@ async function loadAdminPanel() {
 
 loadAdminPanel();
 
-const profileForm = document.getElementById("profileForm");
+
+
+    const profileForm = document.getElementById("profileForm");
 
 function getLatestUser() {
-    if (!currentUser) {
-        return null;
-    }
+    if (!currentUser) return null;
 
     return users.find(user => user.email === currentUser.email) || currentUser;
 }
@@ -599,7 +599,6 @@ if (profileForm && currentUser) {
 
     const profileFields = {
         profileName: "name",
-        profileEmail: "email",
         profilePhone: "phone",
         profileCourse: "course",
         profileYear: "year",
@@ -611,17 +610,17 @@ if (profileForm && currentUser) {
 
     Object.keys(profileFields).forEach(fieldId => {
         const input = document.getElementById(fieldId);
-        const userKey = profileFields[fieldId];
 
         if (input) {
-            input.value = user[userKey] || "";
+            input.value = user[profileFields[fieldId]] || "";
         }
     });
 
     const emailInput = document.getElementById("profileEmail");
 
     if (emailInput) {
-        emailInput.readOnly = true;
+        emailInput.readOnly = false;
+        emailInput.value = user.email || "";
     }
 
     updateProfileCard(user);
@@ -638,28 +637,69 @@ if (profileForm && currentUser) {
             return;
         }
 
+        const newEmail = emailInput
+            ? emailInput.value.trim().toLowerCase()
+            : users[userIndex].email;
+
+        if (!newEmail) {
+            showMessage("profileMessage", "Email cannot be empty.", "error");
+            return;
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailPattern.test(newEmail)) {
+            showMessage("profileMessage", "Please enter a valid email address.", "error");
+            return;
+        }
+
+        const emailExists = users.some(
+            (item, index) =>
+                index !== userIndex &&
+                item.email.toLowerCase() === newEmail
+        );
+
+        if (emailExists) {
+            showMessage("profileMessage", "This email is already registered.", "error");
+            return;
+        }
+
+        const oldEmail = users[userIndex].email;
+
         Object.keys(profileFields).forEach(fieldId => {
             const input = document.getElementById(fieldId);
-            const userKey = profileFields[fieldId];
 
-            if (input && userKey !== "email") {
-                users[userIndex][userKey] = input.value.trim();
+            if (input) {
+                users[userIndex][profileFields[fieldId]] = input.value.trim();
             }
         });
 
-        const updatedUser = users[userIndex];
+        users[userIndex].email = newEmail;
+
+        applications.forEach(application => {
+            if (application.userEmail === oldEmail) {
+                application.userEmail = newEmail;
+                application.userName = users[userIndex].name;
+            }
+        });
+
+        Object.assign(currentUser, users[userIndex]);
 
         localStorage.setItem(
             "currentUser",
-            JSON.stringify(updatedUser)
+            JSON.stringify(currentUser)
         );
 
         saveData();
-        updateProfileCard(updatedUser);
+        updateProfileCard(users[userIndex]);
+
+        if (emailInput) {
+            emailInput.value = newEmail;
+        }
 
         showMessage(
             "profileMessage",
-            "Profile saved successfully!",
+            "Profile and email updated successfully. Use your new email for your next login.",
             "success"
         );
     });
