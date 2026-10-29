@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerNova | My Applications</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6fb;
+            color: #1e293b;
+        }
+
+        .career-app-navbar {
+            background: #ffffff;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06);
+            gap: 20px;
+        }
+
+        .career-app-logo {
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: bold;
+            color: #4f46e5;
+        }
+
+        .career-app-nav {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        .career-app-nav a {
+            text-decoration: none;
+            color: #475569;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .career-app-nav a:hover {
+            color: #4f46e5;
+        }
+
+        .career-app-logout {
+            border: none;
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 10px 17px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .career-app-container {
+            width: 86%;
+            max-width: 1250px;
+            margin: 45px auto;
+        }
+
+        .career-app-header { 
+            background: linear-gradient(120deg, #2563eb, #7c3aed);
+             color: #ffffff; }
+
+        .career-app-eyebrow {
+            color: #6366f1;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .career-app-header h1 { 
+            color: #ffffff !important; 
+            font-weight: 800;
+         } 
+        .career-app-header p { 
+            color: #f8fafc !important;
+            opacity: 1;
+        }
+
+        .career-app-filter {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(15, 23, 42, 0.05);
+            margin-bottom: 25px;
+        }
+
+        .career-app-filter label {
+            display: block;
+            margin-bottom: 9px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #334155;
+        }
+
+        .career-app-filter select {
+            width: 100%;
+            max-width: 280px;
+            padding: 12px;
+            border: 1px solid #dbe2ea;
+            border-radius: 8px;
+            background: #ffffff;
+            color: #334155;
+            outline: none;
+        }
+
+        .career-app-filter select:focus {
+            border-color: #6366f1;
+        }
+
+        .career-applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+        }
+
+        .career-app-empty {
+            background: #ffffff;
+            padding: 45px 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(15, 23, 42, 0.05);
+        }
+
+        .career-app-empty h2 {
+            color: #334155;
+            margin-bottom: 10px;
+        }
+
+        .career-app-empty p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .career-app-navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .career-app-nav {
+                gap: 14px;
+            }
+
+            .career-app-container {
+                width: 92%;
+                margin-top: 30px;
+            }
+
+            .career-app-header h1 {
+                font-size: 29px;
+            }
+        }
+    </style>
+</head>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const applications = JSON.parse(
+        localStorage.getItem("careerNovaApplications") || "[]"
+    );
+
+    const container = document.getElementById("applicationsList");
+
+    if (!container) {
+        console.error(
+            'applications.html mein id="applicationsList" wala element nahi mila.'
+        );
+        return;
+    }
+
+    if (applications.length === 0) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <h3>No applications yet</h3>
+                <p>Explore jobs and click Apply Now to get started.</p>
+                <a href="dashboard.html">Explore Opportunities</a>
+            </div>
+        `;
+        return;
+    }
+
+    container.innerHTML = "";
+
+    applications.forEach(function (app) {
+        const card = document.createElement("article");
+        card.className = "application-card";
+
+        const title = document.createElement("h3");
+        title.textContent = app.jobTitle || "Job Application";
+
+        const status = document.createElement("p");
+        status.textContent = "Status: " + (app.status || "Applied");
+
+        const date = document.createElement("p");
+        date.textContent = app.appliedAt
+            ? "Applied on: " + new Date(app.appliedAt).toLocaleDateString()
+            : "Application date unavailable";
+
+        card.append(title, status, date);
+        container.appendChild(card);
+    });
+});
+</script>
+
+<body>
+
+    <header class="career-app-navbar">
+        <a href="dashboard.html" class="career-app-logo">CareerNova</a>
+
+        <nav class="career-app-nav">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="jobs.html">Jobs</a>
+            <a href="career.html">Career</a>
+            <a href="profile.html">Profile</a>
+            <button id="logoutBtn" class="career-app-logout">Logout</button>
+        </nav>
+    </header>
+
+    <main class="career-app-container">
+        <section class="career-app-header">
+            <p class="career-app-eyebrow">APPLICATION TRACKER</p>
+            <h1>My Applications</h1>
+            <p>Track your job applications and monitor your application progress.</p>
+        </section>
+
+        <section class="career-app-filter">
+            <label for="applicationStatusFilter">Filter Applications</label>
+
+            <select id="applicationStatusFilter">
+                <option value="">All Status</option>
+                <option value="Applied">Applied</option>
+                <option value="Shortlisted">Shortlisted</option>
+                <option value="Selected">Selected</option>
+                <option value="Rejected">Rejected</option>
+            </select>
+        </section>
+
+        <section id="applicationsContainer" class="career-applications-grid">
+            <div class="career-app-empty">
+                <h2>Loading Applications...</h2>
+                <p>Your submitted applications will appear here.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
