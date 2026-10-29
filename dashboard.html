@@ -322,6 +322,7 @@
 
       const updateChecklist = () => {
         const completed = tasks.filter(task => task.checked).length;
+        console.log(tasks)
         const score = Math.round(completed / tasks.length * 100);
         $("checklistProgress").textContent = `${completed} of ${tasks.length} activities completed`;
         $("readinessScore").textContent = `${score}%`;
