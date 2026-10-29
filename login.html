@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerNova | Login</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #eef2ff;
+            color: #0f172a;
+        }
+
+        .career-login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 35px 20px;
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+        }
+
+        .career-login-card {
+            width: 100%;
+            max-width: 1050px;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            background: #ffffff;
+            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
+        }
+
+        .career-login-info {
+            padding: 55px 42px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(145deg, #312e81, #6366f1);
+            color: #ffffff;
+        }
+
+        .career-login-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            width: fit-content;
+            margin-bottom: 55px;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .career-login-logo span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: #ffffff;
+            color: #4f46e5;
+            font-size: 15px;
+        }
+
+        .career-login-info h1 {
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-size: 42px;
+            line-height: 1.15;
+        }
+
+        .career-login-info > p {
+            max-width: 360px;
+            color: #e0e7ff;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .career-login-points {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-top: 35px;
+        }
+
+        .career-login-points div {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .career-login-points span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 27px;
+            height: 27px;
+            border-radius: 50%;
+            background: #ffffff26;
+            color: #ffffff;
+        }
+
+        .career-login-form-area {
+            padding: 55px 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #ffffff;
+        }
+
+        .career-login-heading {
+            margin-bottom: 35px;
+        }
+
+        .career-login-heading h2 {
+            margin-bottom: 10px;
+            color: #0f172a;
+            font-size: 30px;
+        }
+
+        .career-login-heading p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .career-login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .career-login-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .career-login-field label {
+            color: #334155;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .career-login-field input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #dbe2ea;
+            border-radius: 9px;
+            outline: none;
+            background: #f8fafc;
+            color: #0f172a;
+            font-family: inherit;
+            font-size: 14px;
+            transition: 0.25s;
+        }
+
+        .career-login-field input::placeholder {
+            color: #94a3b8;
+        }
+
+        .career-login-field input:focus {
+            border-color: #6366f1;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px #6366f11a;
+        }
+
+        .career-login-options {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: -5px;
+        }
+
+        .career-login-remember {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        .career-login-remember input {
+            accent-color: #4f46e5;
+        }
+
+        .career-login-help {
+            color: #4f46e5;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .career-login-submit {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 9px;
+            background: #4f46e5;
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .career-login-submit:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+        }
+
+        .career-login-message {
+            text-align: center;
+            color: #dc2626;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .career-login-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 25px 0;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        .career-login-divider::before,
+        .career-login-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #e2e8f0;
+        }
+
+        .career-login-register {
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .career-login-register a {
+            color: #4f46e5;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .career-login-security {
+            margin-top: 25px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        @media (max-width: 800px) {
+            .career-login-card {
+                grid-template-columns: 1fr;
+                max-width: 560px;
+            }
+
+            .career-login-info {
+                padding: 35px;
+            }
+
+            .career-login-logo {
+                margin-bottom: 35px;
+            }
+
+            .career-login-info h1 {
+                font-size: 34px;
+            }
+
+            .career-login-form-area {
+                padding: 40px 35px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .career-login-page {
+                padding: 20px 12px;
+            }
+
+            .career-login-info,
+            .career-login-form-area {
+                padding: 28px 22px;
+            }
+
+            .career-login-heading h2 {
+                font-size: 26px;
+            }
+
+            .career-login-options {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="career-login-page">
+        <div class="career-login-card">
+
+            <section class="career-login-info">
+                <a href="index.html" class="career-login-logo">
+                    <span>CN</span>
+                    CareerNova
+                </a>
+
+                <h1>Welcome<br>Back.</h1>
+
+                <p>
+                    Continue your placement journey with CareerNova.
+                    Explore opportunities, manage applications and build your future.
+                </p>
+
+                <div class="career-login-points">
+                    <div>
+                        <span>✓</span>
+                        Access your placement dashboard
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Track your application progress
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Explore career opportunities
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Improve your professional skills
+                    </div>
+                </div>
+            </section>
+
+            <section class="career-login-form-area">
+                <div class="career-login-heading">
+                    <h2>Sign In</h2>
+                    <p>Enter your credentials to access your account.</p>
+                </div>
+
+                <form id="loginForm" class="career-login-form">
+
+                    <div class="career-login-field">
+                        <label for="loginEmail">Email Address</label>
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            placeholder="you@example.com"
+                            required
+                        >
+                    </div>
+
+                    <div class="career-login-field">
+                        <label for="loginPassword">Password</label>
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Enter your password"
+                            required
+                        >
+                    </div>
+
+                    <div class="career-login-options">
+                        <label class="career-login-remember">
+                            <input type="checkbox">
+                            Remember me
+                        </label>
+
+                        <a href="#" class="career-login-help">
+                            Forgot Password?
+                        </a>
+                    </div>
+
+                    <button type="submit" class="career-login-submit">
+                        Login to Account →
+                    </button>
+
+                    <p id="loginMessage" class="career-login-message"></p>
+                </form>
+
+                <div class="career-login-divider">
+                    OR
+                </div>
+
+                <p class="career-login-register">
+                    Don't have an account?
+                    <a href="register.html">Create Account</a>
+                </p>
+
+                <p class="career-login-security">
+                    🔒 Secure access to your CareerNova account
+                </p>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
