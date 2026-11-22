@@ -17,9 +17,19 @@
       --green: #07865c;
       --shadow: 0 12px 35px rgba(24, 45, 100, .07);
     }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; font-family: Inter, "Segoe UI", Arial, sans-serif; background: var(--bg); color: var(--ink); }
+    * { box-sizing: 
+      border-box;
+     }
+    html
+     { 
+      scroll-behavior: smooth;
+     }
+    body
+     { margin: 0;
+       font-family: Inter,
+       "Segoe UI", Arial, 
+       sans-serif; background: var(--bg);
+       color: var(--ink); }
     a { text-decoration: none; }
     button, input { font: inherit; }
     button, a { -webkit-tap-highlight-color: transparent; }
@@ -28,7 +38,15 @@
       border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between;
       gap: 22px; position: sticky; top: 0; z-index: 10; backdrop-filter: blur(12px);
     }
-    .logo { display: inline-flex; align-items: center; gap: 11px; color: var(--navy); font-size: 23px; font-weight: 850; letter-spacing: -.6px; }
+    .logo {
+       display: inline-flex;
+        align-items: center;
+         gap: 11px;
+         color: var(--navy);
+         font-size: 23px;
+         font-weight: 850;
+         letter-spacing: -.6px;
+   }
     .logo-mark { width: 42px; height: 42px; display: grid; place-items: center; color: white; border-radius: 13px; background: linear-gradient(135deg,var(--blue),var(--purple)); font-size: 13px; box-shadow: 0 7px 18px #4f46e540; }
     .nav-links { display: flex; align-items: center; flex-wrap: wrap; gap: clamp(12px, 2vw, 27px); }
     .nav-links a { color: #536079; font-size: 13px; font-weight: 700; }
