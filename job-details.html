@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareerNova | Job Details</title>
+    <title>CareerNova | Explore Jobs</title>
     <link rel="stylesheet" href="style.css">
 
     <style>
@@ -19,7 +19,7 @@
             color: #1e293b;
         }
 
-        .job-nav {
+        .jobs-nav {
             background: #ffffff;
             padding: 18px 7%;
             display: flex;
@@ -29,32 +29,32 @@
             box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06);
         }
 
-        .job-logo {
+        .jobs-logo {
             color: #4f46e5;
             text-decoration: none;
             font-size: 25px;
             font-weight: bold;
         }
 
-        .job-links {
+        .jobs-links {
             display: flex;
             align-items: center;
             gap: 22px;
             flex-wrap: wrap;
         }
 
-        .job-links a {
+        .jobs-links a {
             color: #475569;
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
         }
 
-        .job-links a:hover {
+        .jobs-links a:hover {
             color: #4f46e5;
         }
 
-        .job-logout {
+        .jobs-logout {
             background: #fee2e2;
             color: #dc2626;
             border: none;
@@ -64,163 +64,163 @@
             font-weight: bold;
         }
 
-        .job-container {
+        .jobs-container {
             width: 86%;
-            max-width: 1100px;
+            max-width: 1250px;
             margin: 45px auto;
         }
 
-        .job-details-card,
-        .job-application-card {
-            background: #ffffff;
-            padding: 32px;
-            border-radius: 16px;
-            box-shadow: 0 5px 22px rgba(15, 23, 42, 0.06);
-            margin-bottom: 25px;
+        .jobs-header {
+            margin-bottom: 28px;
         }
 
-        .job-details-card {
-            border-top: 5px solid #6366f1;
+        .jobs-eyebrow {
+            color: #6366f1;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
         }
 
-        .job-details-card h1 {
+        .jobs-header h1 {
             color: #172554;
-            font-size: 32px;
-            margin: 0 0 15px;
+            font-size: 36px;
+            margin: 0;
         }
 
-        .job-details-card h2 {
-            color: #334155;
-            font-size: 20px;
-            margin-top: 28px;
-        }
-
-        .job-details-card p {
+        .jobs-header p {
             color: #64748b;
             font-size: 15px;
-            line-height: 1.8;
+            margin-top: 12px;
         }
 
-        .job-application-card h2 {
-            color: #1e293b;
-            font-size: 24px;
-            margin-top: 0;
-            margin-bottom: 25px;
+        .jobs-filter {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 15px;
+            background: #ffffff;
+            padding: 22px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(15, 23, 42, 0.05);
+            margin-bottom: 28px;
         }
 
-        .job-form label {
-            display: block;
-            color: #334155;
-            font-size: 13px;
-            font-weight: bold;
-            margin: 18px 0 8px;
-        }
-
-        .job-form label:first-child {
-            margin-top: 0;
-        }
-
-        .job-form input {
+        .jobs-filter input,
+        .jobs-filter select {
             width: 100%;
             padding: 13px;
             border: 1px solid #dbe2ea;
             border-radius: 9px;
             font-size: 14px;
             color: #334155;
+            background: #ffffff;
             outline: none;
         }
 
-        .job-form input:focus {
+        .jobs-filter input:focus,
+        .jobs-filter select:focus {
             border-color: #6366f1;
             box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
         }
 
-        .job-submit {
-            width: 100%;
-            background: #4f46e5;
-            color: #ffffff;
-            border: none;
-            padding: 14px;
-            border-radius: 9px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 25px;
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
         }
 
-        .job-submit:hover {
-            background: #4338ca;
+        .jobs-empty {
+            background: #ffffff;
+            padding: 45px 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(15, 23, 42, 0.05);
         }
 
-        .job-message {
-            margin-top: 15px;
+        .jobs-empty h2 {
+            color: #334155;
+            margin-bottom: 10px;
+        }
+
+        .jobs-empty p {
+            color: #64748b;
             font-size: 14px;
-            color: #475569;
+        }
+
+        @media (max-width: 850px) {
+            .jobs-filter {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
-            .job-nav {
+            .jobs-nav {
                 flex-direction: column;
                 align-items: flex-start;
             }
 
-            .job-links {
+            .jobs-links {
                 gap: 14px;
             }
 
-            .job-container {
+            .jobs-container {
                 width: 92%;
                 margin-top: 30px;
             }
 
-            .job-details-card,
-            .job-application-card {
-                padding: 23px;
-            }
-
-            .job-details-card h1 {
-                font-size: 27px;
+            .jobs-header h1 {
+                font-size: 29px;
             }
         }
     </style>
 </head>
 <body>
 
-    <header class="job-nav">
-        <a href="dashboard.html" class="job-logo">CareerNova</a>
+    <header class="jobs-nav">
+        <a href="dashboard.html" class="jobs-logo">CareerNova</a>
 
-        <nav class="job-links">
+        <nav class="jobs-links">
             <a href="dashboard.html">Dashboard</a>
             <a href="jobs.html">Jobs</a>
             <a href="career.html">Career</a>
             <a href="profile.html">Profile</a>
-            <button id="logoutBtn" class="job-logout">Logout</button>
+            <button id="logoutBtn" class="jobs-logout">Logout</button>
         </nav>
     </header>
 
-    <main class="job-container">
-        <section id="jobDetails" class="job-details-card">
-            <p>Loading job details...</p>
+    <main class="jobs-container">
+        <section class="jobs-header">
+            <p class="jobs-eyebrow">OPPORTUNITIES</p>
+            <h1>Explore Jobs</h1>
+            <p>Discover internships and job opportunities that match your career goals.</p>
         </section>
 
-        <section class="job-application-card">
-            <h2>Apply for This Job</h2>
+        <section class="jobs-filter">
+            <input
+                type="text"
+                id="jobSearch"
+                placeholder="Search by job title or company"
+            >
 
-            <form id="applicationForm" class="job-form">
-                <label for="applicantName">Full Name</label>
-                <input type="text" id="applicantName" placeholder="Enter your full name" required>
+            <select id="jobTypeFilter">
+                <option value="">All Job Types</option>
+                <option value="Internship">Internship</option>
+                <option value="Full Time">Full Time</option>
+            </select>
 
-                <label for="applicantEmail">Email Address</label>
-                <input type="email" id="applicantEmail" placeholder="Enter your email address" required>
+            <select id="jobLocationFilter">
+                <option value="">All Locations</option>
+                <option value="Remote">Remote</option>
+                <option value="On-site">On-site</option>
+                <option value="Hybrid">Hybrid</option>
+            </select>
+        </section>
 
-                <label for="applicantResume">Resume Link</label>
-                <input type="url" id="applicantResume" placeholder="Paste your resume link" required>
-
-                <button type="submit" class="job-submit">
-                    Submit Application
-                </button>
-
-                <p id="applicationMessage" class="job-message"></p>
-            </form>
+        <section id="jobsContainer" class="jobs-grid">
+            <div class="jobs-empty">
+                <h2>Loading Jobs...</h2>
+                <p>Please wait while available opportunities are loaded.</p>
+            </div>
         </section>
     </main>
 
