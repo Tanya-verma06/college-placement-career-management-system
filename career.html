@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerNova | Career Recommendation</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6fb;
+            color: #1e293b;
+        }
+
+        .career-nav {
+            background: #ffffff;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06);
+        }
+
+        .career-logo {
+            color: #4f46e5;
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .career-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        .career-links a {
+            color: #475569;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .career-links a:hover {
+            color: #4f46e5;
+        }
+
+        .career-logout {
+            background: #fee2e2;
+            color: #dc2626;
+            border: none;
+            padding: 10px 17px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .career-container {
+            width: 86%;
+            max-width: 1100px;
+            margin: 45px auto;
+        }
+
+        .career-header {
+            margin-bottom: 28px;
+        }
+
+        .career-eyebrow {
+            color: #6366f1;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .career-header h1 {
+            color: #172554;
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .career-header p {
+            color: #64748b;
+            font-size: 15px;
+            margin-top: 12px;
+        }
+
+        .career-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .career-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 5px 22px rgba(15, 23, 42, 0.06);
+        }
+
+        .career-card h2 {
+            color: #1e293b;
+            margin-top: 0;
+            margin-bottom: 24px;
+            font-size: 22px;
+        }
+
+        .career-form label {
+            display: block;
+            color: #334155;
+            font-size: 13px;
+            font-weight: bold;
+            margin: 18px 0 8px;
+        }
+
+        .career-form label:first-child {
+            margin-top: 0;
+        }
+
+        .career-form select,
+        .career-form textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #dbe2ea;
+            border-radius: 9px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: #334155;
+            background: #ffffff;
+            outline: none;
+        }
+
+        .career-form select:focus,
+        .career-form textarea:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .career-form textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .career-submit {
+            width: 100%;
+            border: none;
+            background: #4f46e5;
+            color: #ffffff;
+            padding: 14px;
+            border-radius: 9px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 25px;
+        }
+
+        .career-submit:hover {
+            background: #4338ca;
+        }
+
+        .career-result {
+            min-height: 280px;
+        }
+
+        .career-result h2 {
+            margin-bottom: 15px;
+        }
+
+        .career-result p {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 800px) {
+            .career-nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .career-links {
+                gap: 14px;
+            }
+
+            .career-container {
+                width: 92%;
+                margin-top: 30px;
+            }
+
+            .career-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .career-header h1 {
+                font-size: 29px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="career-nav">
+        <a href="dashboard.html" class="career-logo">CareerNova</a>
+
+        <nav class="career-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="jobs.html">Jobs</a>
+            <a href="career.html">Career</a>
+            <a href="profile.html">Profile</a>
+            <button id="logoutBtn" class="career-logout">Logout</button>
+        </nav>
+    </header>
+
+    <main class="career-container">
+        <section class="career-header">
+            <p class="career-eyebrow">CAREER DEVELOPMENT</p>
+            <h1>Career Recommendation</h1>
+            <p>Explore suitable career paths based on your interests, skills, and experience.</p>
+        </section>
+
+        <section class="career-layout">
+            <div class="career-card">
+                <h2>Build Your Career Profile</h2>
+
+                <form id="careerForm" class="career-form">
+                    <label for="careerInterest">Your Interest</label>
+
+                    <select id="careerInterest" required>
+                        <option value="">Select your interest</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Cloud Computing">Cloud Computing</option>
+                        <option value="Data Science">Data Science</option>
+                        <option value="Cyber Security">Cyber Security</option>
+                        <option value="Software Development">Software Development</option>
+                    </select>
+
+                    <label for="careerSkills">Your Skills</label>
+
+                    <textarea id="careerSkills" rows="4" placeholder="Example: Java, HTML, CSS, AWS, SQL" required></textarea>
+
+                    <label for="careerExperience">Experience Level</label>
+
+                    <select id="careerExperience" required>
+                        <option value="">Select experience</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Advanced</option>
+                    </select>
+
+                    <button type="submit" class="career-submit">
+                        Get Recommendation
+                    </button>
+                </form>
+            </div>
+
+            <div id="careerResult" class="career-card career-result">
+                <h2>Your Career Recommendation</h2>
+                <p>
+                    Complete the form to discover a recommended career path
+                    based on your interests and skills.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
