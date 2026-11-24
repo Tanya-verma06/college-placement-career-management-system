@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -155,8 +154,15 @@
             min-height: 115px;
         }
 
-        .profile-submit {
+        .profile-actions {
             grid-column: 1 / -1;
+            display: flex;
+            gap: 12px;
+            margin-top: 5px;
+        }
+
+        .profile-submit {
+            flex: 1;
             background: #4f46e5;
             color: #ffffff;
             border: none;
@@ -171,6 +177,21 @@
             background: #4338ca;
         }
 
+        .profile-cancel {
+            padding: 14px 22px;
+            background: #e2e8f0;
+            color: #334155;
+            border: none;
+            border-radius: 9px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .profile-cancel:hover {
+            background: #cbd5e1;
+        }
+
         .profile-message {
             grid-column: 1 / -1;
             color: #475569;
@@ -179,7 +200,40 @@
         }
 
         .student-profile-card {
-            margin-top: 30px;
+            margin-top: 0;
+        }
+
+        .student-profile-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .student-profile-heading h2 {
+            margin: 0 0 8px;
+        }
+
+        .student-profile-heading p {
+            color: #64748b;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .edit-profile-btn {
+            background: #4f46e5;
+            color: #ffffff;
+            border: none;
+            padding: 11px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .edit-profile-btn:hover {
+            background: #4338ca;
         }
 
         .student-profile-details {
@@ -196,8 +250,21 @@
             overflow-wrap: anywhere;
         }
 
+        .student-profile-details p:last-child {
+            border-bottom: none;
+        }
+
         .student-profile-details strong {
             color: #172554;
+        }
+
+        .student-profile-details a {
+            color: #4f46e5;
+            text-decoration: none;
+        }
+
+        .student-profile-details a:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
@@ -229,9 +296,18 @@
             }
 
             .profile-field.full-width,
-            .profile-submit,
+            .profile-actions,
             .profile-message {
                 grid-column: auto;
+            }
+
+            .student-profile-heading {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .profile-actions {
+                flex-direction: column;
             }
         }
     </style>
@@ -257,65 +333,93 @@
             <p>Keep your personal information and technical skills up to date.</p>
         </section>
 
-        <section class="profile-card">
+        <!-- EDIT PROFILE FORM: shown for first-time setup or after clicking Edit Profile -->
+        <section class="profile-card" id="profileEditCard">
             <h2>Profile Information</h2>
 
             <form id="profileForm" class="profile-form">
                 <div class="profile-field">
                     <label for="profileName">Full Name</label>
-                    <input type="text" id="profileName" placeholder="Enter your full name" required>
+                    <input type="text" id="profileName"
+                        placeholder="Enter your full name" required>
                 </div>
 
                 <div class="profile-field">
                     <label for="profileEmail">Email Address</label>
-                    <input type="email" id="profileEmail" placeholder="Enter your email" required>
+                    <input type="email" id="profileEmail"
+                        placeholder="Enter your email" required>
                 </div>
 
                 <div class="profile-field">
                     <label for="profilePhone">Phone Number</label>
-                    <input type="tel" id="profilePhone" placeholder="Enter your phone number" required>
+                    <input type="tel" id="profilePhone"
+                        placeholder="Enter your phone number" required>
                 </div>
 
                 <div class="profile-field">
                     <label for="profileCourse">Course</label>
-                    <input type="text" id="profileCourse" placeholder="e.g. B.Tech CSE" required>
+                    <input type="text" id="profileCourse"
+                        placeholder="e.g. B.Tech CSE" required>
                 </div>
 
                 <div class="profile-field">
                     <label for="profileYear">Graduation Year</label>
-                    <input type="number" id="profileYear" placeholder="e.g. 2028" required>
+                    <input type="number" id="profileYear"
+                        placeholder="e.g. 2028" required>
                 </div>
 
                 <div class="profile-field">
                     <label for="profileCpi">CPI</label>
-                    <input type="number" id="profileCpi" step="0.01" placeholder="Enter your CPI" required>
+                    <input type="number" id="profileCpi"
+                        step="0.01" min="0" max="10"
+                        placeholder="Enter your CPI" required>
                 </div>
 
                 <div class="profile-field full-width">
                     <label for="profileSkills">Technical Skills</label>
-                    <textarea id="profileSkills" rows="4" placeholder="Java, HTML, CSS, JavaScript, AWS"></textarea>
+                    <textarea id="profileSkills" rows="4"
+                        placeholder="Java, HTML, CSS, JavaScript, AWS"></textarea>
                 </div>
 
                 <div class="profile-field full-width">
                     <label for="profileGithub">GitHub Profile</label>
-                    <input type="url" id="profileGithub" placeholder="Enter your GitHub profile link">
+                    <input type="url" id="profileGithub"
+                        placeholder="Enter your GitHub profile link">
                 </div>
 
                 <div class="profile-field full-width">
                     <label for="profileLinkedin">LinkedIn Profile</label>
-                    <input type="url" id="profileLinkedin" placeholder="Enter your LinkedIn profile link">
+                    <input type="url" id="profileLinkedin"
+                        placeholder="Enter your LinkedIn profile link">
                 </div>
 
-                <button type="submit" class="profile-submit">
-                    Save Profile
-                </button>
+                <div class="profile-actions">
+                    <button type="submit" class="profile-submit">
+                        Save Profile
+                    </button>
+
+                    <button type="button" id="cancelProfileEdit"
+                        class="profile-cancel">
+                        Cancel
+                    </button>
+                </div>
 
                 <p id="profileMessage" class="profile-message"></p>
             </form>
         </section>
 
-        <section class="student-profile-card">
-            <h2>My Student Profile</h2>
+        <!-- READ-ONLY STUDENT PROFILE: shown after the profile has been saved -->
+        <section class="student-profile-card" id="studentProfileCard" style="display: none;">
+            <div class="student-profile-heading">
+                <div>
+                    <h2>My Student Profile</h2>
+                    <p>Your personal and academic information</p>
+                </div>
+
+                <button type="button" id="editProfileBtn" class="edit-profile-btn">
+                    ✏️ Edit Profile
+                </button>
+            </div>
 
             <div class="student-profile-details">
                 <p><strong>Full Name:</strong> <span id="viewProfileName">Not provided</span></p>
@@ -332,6 +436,5 @@
     </main>
 
     <script src="script.js"></script>
-    <script src="profile.js"></script>
 </body>
 </html>
